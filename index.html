@@ -179,12 +179,12 @@
 
   /* ---------- HERO ---------- */
   .hero{background:radial-gradient(ellipse at 70% 30%,#FFFDF7 0%,var(--creme) 60%);padding:clamp(30px,5vw,58px) 0 clamp(52px,6vw,76px)}
-  .hero-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"topo img" "cards img" "btn img";
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"topo img" "btn img" "cards img";
     gap:0 clamp(24px,4vw,54px);align-items:center}
   .hero-topo{grid-area:topo;text-align:center}
   .hero-img{grid-area:img}
   .hero-cards{grid-area:cards}
-  .hero-btn{grid-area:btn;margin-top:26px;text-align:center}
+  .hero-btn{grid-area:btn;margin-top:24px;text-align:center}
   .hero h1{margin:14px 0 16px;font-size:clamp(32px,5.2vw,54px)}
   .hero h1 .ouro{display:block}
   .hero .sub{margin:0 auto;font-size:clamp(16px,2vw,19px)}
@@ -196,7 +196,7 @@
   .stat b{display:block;font-family:var(--serif);font-size:clamp(26px,3.2vw,32px);color:var(--verde);font-weight:700;line-height:1.05}
   .stat span{display:block;font-size:13.5px;color:var(--cinza);margin-top:4px}
   @media(max-width:880px){
-    .hero-grid{grid-template-columns:1fr;grid-template-areas:"topo" "img" "cards" "btn"}
+    .hero-grid{grid-template-columns:1fr;grid-template-areas:"topo" "img" "btn" "cards"}
     .hero-img{margin:18px auto 0;max-width:520px}
     .stats{margin-top:20px}
   }
