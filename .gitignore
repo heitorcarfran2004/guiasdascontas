@@ -2,3 +2,6 @@ _geracao/
 /1366
 /390
 node_modules/
+
+.vercel
+.env*
