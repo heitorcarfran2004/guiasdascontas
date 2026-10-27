@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1F3A2C">
+<meta name="robots" content="noindex,nofollow">
+<title>Oferta única · Guias Trançadas</title>
+
+<!-- ============================================================
+     UPSELL "30 Modelos de Guias Trançadas" (R$ 19,90), modelado do /upsell da miçanga.
+     O QUE TROCAR: só UPSELL_ACEITE logo abaixo (o link do produto na Wiapy).
+     ============================================================ -->
+<script>
+  // Link do produto de upsell na Wiapy. Enquanto terminar em "undefined" o botão
+  // NÃO cobra nada: o clique mostra um aviso (ver "guarda" no fim da página).
+  window.UPSELL_ACEITE = "https://pay.wiapy.com/checkout/undefined";
+  // Recusa: vai para o downsell (/dows). Caminho relativo: o SDK da Wiapy resolve
+  // contra o domínio atual, então funciona no localhost e em guiasdascontas.vercel.app/dows.
+  window.UPSELL_RECUSA = "/dows";
+  window.UPSELL_RECUSA_TEXTO = "Recusar esta oferta";
+</script>
+
+<!-- VTurb: o bloco que o painel manda pôr no <head> (marca o início e pré-carrega o player) -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/59fb2471-bbf9-48ae-ad59-009b3aba8bd1/players/6ae012e6c5977d65816137a0/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/59fb2471-bbf9-48ae-ad59-009b3aba8bd1/6ae012db3b1e2d41ab41380b/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'"
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+
+<!-- SDK da Wiapy: define initWiapyUpsell(), que desenha o botão de aceite e o de recusa -->
+<script src="https://wiapy.com/sell/1.0.0/sell.min.js"></script>
+
+<!-- UTMify: o mesmo script da LP das Guias, para a venda do upsell cair no mesmo painel -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+
+<style>
+:root{
+  --verde:#1F3A2C; --verde-esc:#16291F; --verde-texto:#B9CBBF;
+  --dourado:#C6A15B; --dourado-esc:#9C7838; --dourado-claro:#E2C27F;
+  --creme:#F8F5EC; --creme-2:#F1EADA; --borda:#E6DCC4;
+  --tinta:#1D2922; --cinza:#5D695F; --branco:#fff;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; background:var(--creme); color:var(--tinta); font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow-x:hidden}
+img{display:block; max-width:100%}
+.env{width:100%; max-width:460px; margin:0 auto; padding:0 16px}
+h1,h2,.por b,.selo b{font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1}
+
+/* ══════════ contador (igual ao da miçanga: fim gravado na sessão) ══════════ */
+.faixa-tempo{background:var(--verde); color:var(--creme); position:relative; z-index:30; box-shadow:0 2px 14px rgba(22,41,31,.3); border-bottom:2px solid var(--dourado)}
+.faixa-tempo .env{display:flex; align-items:center; justify-content:center; gap:11px; padding:11px 12px}
+.faixa-tempo b{font-weight:700; font-size:14.5px; letter-spacing:.4px}
+.relogio{display:flex; align-items:center; gap:4px}
+.digito{background:rgba(0,0,0,.28); color:var(--dourado-claro); border-radius:8px; min-width:30px; padding:5px 3px; text-align:center; font-size:20px; font-weight:800; line-height:1; font-variant-numeric:tabular-nums lining-nums}
+.doispontos{font-size:19px; font-weight:800; color:var(--dourado-claro); animation:pisca 1s steps(1) infinite}
+@keyframes pisca{50%{opacity:.2}}
+.faixa-tempo.acabou{background:#4b5163; border-color:#4b5163}
+
+/* ══════════ topo: título, subtítulo e VSL ══════════ */
+.topo{width:100%; max-width:460px; margin:0 auto; padding:22px 16px 0; text-align:center}
+.topo h1{font-family:var(--serif); font-weight:700; font-size:28px; line-height:1.15; color:var(--verde); margin:0; padding-top:8px; text-wrap:balance}
+.topo p{margin:9px auto 0; max-width:360px; font-size:18px; font-weight:400; line-height:1.4; color:var(--cinza)}
+/* quem manda na largura do vídeo é este contêiner: o VTurb reescreve o style do player */
+.palco-vsl{width:70%; max-width:400px; margin:18px auto 0; border-radius:16px; overflow:hidden; line-height:0; box-shadow:0 10px 28px rgba(31,58,44,.18); border:2px solid var(--dourado)}
+
+/* ══════════ o que aparece depois de 1 minuto ══════════ */
+/* display:none (e não opacity:0) para não deixar um vão nem barra de rolagem entregando o resto */
+.depois{display:none}
+.depois.on{display:block; animation:entra .45s ease}
+@keyframes entra{from{opacity:0; transform:translateY(10px)}}
+
+.orn{display:flex; align-items:center; justify-content:center; gap:10px; margin:30px auto 14px; color:var(--dourado)}
+.orn i{display:block; width:46px; height:1px; background:currentColor}
+.orn b{width:7px; height:7px; transform:rotate(45deg); border:1.5px solid currentColor}
+.chamada{text-align:center}
+.chamada h2{font-family:var(--serif); font-weight:700; font-size:24px; line-height:1.2; color:var(--verde); margin:0; text-wrap:balance}
+.chamada p{margin:10px 0 0; font-size:15.5px; line-height:1.55; color:var(--cinza)}
+.chamada strong{color:var(--tinta); font-weight:600}
+
+/* galeria: quadros reais de guias trançadas (B-roll), não páginas do material */
+.galeria{display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin:18px 0 0}
+.galeria img{width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:10px; background:var(--creme-2)}
+.legenda{margin:8px 0 0; text-align:center; font-size:11.5px; color:#8a948c}
+
+/* ══════════ card: o que leva + preço + botão ══════════ */
+.oferta{background:var(--branco); border:1px solid var(--borda); border-top:3px solid var(--dourado); border-radius:14px; padding:22px 16px 18px; margin:24px 0 0; text-align:center; box-shadow:0 10px 26px rgba(31,58,44,.09)}
+.oferta__nome{font-family:var(--serif); font-weight:700; font-size:21px; line-height:1.2; color:var(--verde); margin:0 0 16px}
+.lista{display:flex; flex-direction:column; gap:12px; text-align:left; margin:0 0 18px; padding:0 0 16px; border-bottom:1px solid var(--borda)}
+.item{display:flex; align-items:flex-start; gap:11px}
+.item .ck{flex:0 0 22px; width:22px; height:22px; margin-top:1px; border-radius:50%; background:var(--verde); color:var(--dourado-claro); display:inline-flex; align-items:center; justify-content:center}
+.item .ck svg{width:13px; height:13px}
+.item p{margin:0; font-size:14.5px; line-height:1.5; color:var(--cinza)}
+.item strong{font-weight:600; color:var(--tinta)}
+.oferta__titulo{font-size:15px; font-weight:600; color:var(--cinza); margin:0}
+.por{display:flex; align-items:baseline; justify-content:center; margin-top:4px}
+.por b{font-family:var(--serif); font-weight:700; font-size:44px; line-height:1; color:var(--verde)}
+.parcela{margin-top:7px; font-size:13px; color:var(--cinza)}
+#wiapy_upsell{margin-top:16px}
+.aviso-link{display:none; margin:10px 0 0; padding:9px 10px; border-radius:8px; background:#fff7e6; border:1px solid #f0d49a; color:#7a5a17; font-size:13px; font-weight:600}
+.cta-verde{display:block; width:100%; padding:15px 18px; border-radius:10px; background:#00d769; color:#fff; text-align:center; text-decoration:none; font-size:17px; font-weight:700}
+.cta-verde:hover{background:#00b85a}
+.recusar{display:block; margin-top:12px; text-align:center; font-size:14px; color:#000}
+.selo-seguro{display:flex; align-items:center; justify-content:center; gap:6px; margin-top:12px; font-size:12px; color:var(--cinza)}
+.selo-seguro svg{width:13px; height:13px}
+
+/* ══════════ garantia (o selo da LP) ══════════ */
+.garantia{display:flex; align-items:center; gap:14px; background:var(--branco); border:1px solid var(--borda); border-radius:14px; padding:16px; margin:18px 0 0}
+.selo{flex:none; position:relative; width:76px; height:76px; border-radius:50%; background:var(--verde); color:var(--creme); display:flex; flex-direction:column; align-items:center; justify-content:center}
+.selo::before{content:""; position:absolute; inset:4px; border-radius:50%; border:1.5px solid var(--dourado)}
+.selo b{font-family:var(--serif); font-size:30px; line-height:1; color:var(--dourado-claro)}
+.selo span{font-size:9.5px; letter-spacing:1.4px; text-transform:uppercase; font-weight:700}
+.garantia-txt b{display:block; font-size:16px; font-weight:700; color:var(--verde); margin-bottom:3px}
+.garantia-txt p{margin:0; font-size:13px; line-height:1.45; color:var(--cinza)}
+
+.rodape{text-align:center; padding:26px 16px calc(20px + env(safe-area-inset-bottom)); font-size:11.5px; line-height:1.6; color:#8a948c}
+
+@media (max-width:400px){
+  .topo h1{font-size:25px}
+  .topo p{font-size:17px}
+  .por b{font-size:40px}
+  .faixa-tempo b{font-size:13px}
+  .digito{min-width:27px; font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){.doispontos,.depois.on{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- ═════════ contador ═════════ -->
+<div class="faixa-tempo" id="faixa-tempo">
+  <div class="env">
+    <b id="rotulo-tempo">OFERTA EXPIRA EM</b>
+    <div class="relogio">
+      <span class="digito" id="d1">0</span><span class="digito" id="d2">7</span>
+      <span class="doispontos">:</span>
+      <span class="digito" id="d3">0</span><span class="digito" id="d4">0</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════ título + VSL (a única coisa visível no primeiro minuto) ═════════ -->
+<header class="topo">
+  <h1>Seu material já será liberado!</h1>
+  <p>Mas antes assista esse vídeo<br>para continuar seu acesso</p>
+</header>
+
+<div class="palco-vsl">
+  <vturb-smartplayer id="vid-6ae012e6c5977d65816137a0" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/59fb2471-bbf9-48ae-ad59-009b3aba8bd1/players/6ae012e6c5977d65816137a0/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+</div>
+
+<!-- ═════════ tudo daqui para baixo: só depois de 1 minuto de página ═════════ -->
+<div class="env depois" id="depois">
+
+  <div class="orn"><i></i><b></b><i></i></div>
+  <div class="chamada">
+    <h2>Ninguém caminha com uma força só</h2>
+    <p>Na guia trançada, os fios de cada força se entrelaçam e viram uma guia só: <strong>o seu orixá e a entidade que caminha com você</strong>, juntos, no seu pescoço.</p>
+  </div>
+
+  <!-- quadros de vídeos reais de guias trançadas, sem rosto nem marca (fonte: Downloads/Guia de Contas/Vídeos Guia Trançadas) -->
+  <div class="galeria">
+    <img src="assets/upsell/t1.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada azul e dourada">
+    <img src="assets/upsell/t2.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada lilás e branca com búzios">
+    <img src="assets/upsell/t3.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada preta e branca com crucifixo">
+    <img src="assets/upsell/t4.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guias trançadas vermelhas e pretas com tridente">
+    <img src="assets/upsell/t5.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada vermelha com rosas">
+    <img src="assets/upsell/t6.webp" width="360" height="480" loading="lazy" decoding="async" alt="Mãos fechando uma guia trançada de três fios">
+  </div>
+  <p class="legenda">Guias trançadas feitas por artesãs. Imagens ilustrativas.</p>
+
+  <div class="oferta" id="oferta">
+    <h2 class="oferta__nome">30 Modelos de Guias Trançadas</h2>
+    <div class="lista">
+      <div class="item">
+        <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>30 modelos</strong> unindo 2 ou 3 forças numa guia só, entre orixás e entidades.</p>
+      </div>
+      <div class="item">
+        <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>As cores certas</strong> de cada força.</p>
+      </div>
+      <div class="item">
+        <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>A quantidade exata de contas</strong> em cada fio.</p>
+      </div>
+      <div class="item">
+        <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>Passo a passo ilustrado</strong> da trança, do primeiro fio ao fechamento.</p>
+      </div>
+      <div class="item">
+        <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p>Sempre <strong>respeitando o que a sua casa orienta</strong>.</p>
+      </div>
+    </div>
+
+    <p class="oferta__titulo">Tudo isso por apenas</p>
+    <div class="por"><b>R$ 19,90</b></div>
+    <div class="parcela">Condição que só aparece agora, nesta página</div>
+
+    <!-- a Wiapy desenha aqui o botão de aceite (1 clique) e o link de recusa -->
+    <div id="wiapy_upsell"></div>
+    <p class="aviso-link" id="aviso-link">Link de compra ainda não configurado.</p>
+
+    <div class="selo-seguro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+      Compra segura · acesso junto com o seu pedido
+    </div>
+  </div>
+
+  <div class="garantia">
+    <div class="selo"><b>7</b><span>dias</span></div>
+    <div class="garantia-txt">
+      <b>Garantia de 7 dias</b>
+      <p>Se em até 7 dias você achar que não é para você, é só pedir o reembolso e devolvemos 100% do valor.</p>
+    </div>
+  </div>
+
+  <p class="rodape">
+    Esta oferta aparece uma única vez, agora.<br>
+    © 2026 · Todos os direitos reservados.
+  </p>
+</div>
+
+<!-- ══════════ botão da Wiapy ══════════
+     Mesmo esquema da miçanga: tenta desenhar já; se o SDK atrasar, tenta de novo por 5 s
+     e, se não vier, põe os dois links à mão para a página nunca ficar sem saída.
+     Os valores são os do código que o Heitor mandou; os links vêm das constantes do <head>. -->
+<script>
+(function () {
+  var caixa = document.getElementById('wiapy_upsell');
+
+  function desenhar() {
+    if (typeof initWiapyUpsell !== 'function') return false;
+    initWiapyUpsell({
+      linkUrl: window.UPSELL_ACEITE,
+      linkText: "SIM, EU ACEITO ESSA OFERTA",
+      styles: { backgroundColor: "#00d769", hoverBackgroundColor: "#00b85a", fontSize: "17px", borderRadius: "10px" },
+      refusalLinkUrl: window.UPSELL_RECUSA,
+      refusalLinkText: window.UPSELL_RECUSA_TEXTO,
+      refusalLinkColor: "#000000"
+    });
+    return true;
+  }
+
+  function reserva() {
+    if (caixa.children.length) return;
+    caixa.innerHTML =
+      '<a class="cta-verde" href="' + window.UPSELL_ACEITE + '">SIM, EU ACEITO ESSA OFERTA</a>' +
+      '<a class="recusar" href="' + window.UPSELL_RECUSA + '">' + window.UPSELL_RECUSA_TEXTO + '</a>';
+  }
+
+  if (!desenhar()) {
+    var tentativa = setInterval(function () { if (desenhar()) clearInterval(tentativa); }, 150);
+    setTimeout(function () { clearInterval(tentativa); reserva(); }, 5000);
+  }
+
+  // GUARDA: enquanto o produto não existe na Wiapy (link com "undefined" ou TROCAR),
+  // o clique no aceite é barrado aqui, na fase de captura, antes de chegar ao botão.
+  // A recusa continua funcionando. Some sozinha quando o link real entrar.
+  caixa.addEventListener('click', function (e) {
+    if (!/undefined|TROCAR/.test(window.UPSELL_ACEITE)) return;
+    if (!e.target.closest('button, .cta-verde')) return;
+    e.preventDefault(); e.stopPropagation();
+    document.getElementById('aviso-link').style.display = 'block';
+  }, true);
+})();
+</script>
+
+<script>
+/* CONTADOR — 7 minutos gravados na sessão (recarregar não devolve o tempo cheio). */
+(function () {
+  var MIN = 7, fim;
+  try {
+    fim = parseInt(sessionStorage.getItem('trancadas-fim') || '0', 10);
+    if (!fim || fim < Date.now()) { fim = Date.now() + MIN * 60000; sessionStorage.setItem('trancadas-fim', String(fim)); }
+  } catch (e) { fim = Date.now() + MIN * 60000; }
+  var d = ['d1', 'd2', 'd3', 'd4'].map(function (x) { return document.getElementById(x); });
+  function tique() {
+    var s = Math.max(0, Math.round((fim - Date.now()) / 1000));
+    var t = String(Math.floor(s / 60)).padStart(2, '0') + String(s % 60).padStart(2, '0');
+    for (var i = 0; i < 4; i++) if (d[i].textContent !== t[i]) d[i].textContent = t[i];
+    if (s <= 0) {
+      clearInterval(id);
+      document.getElementById('faixa-tempo').classList.add('acabou');
+      document.getElementById('rotulo-tempo').textContent = 'OFERTA ENCERRADA';
+    }
+  }
+  tique();
+  var id = setInterval(tique, 1000);
+})();
+
+/* DESBLOQUEIO EM 1 MINUTO — o mesmo mecanismo da miçanga: tempo de PÁGINA (não do player),
+   com o instante de liberar gravado na sessão. Quem recarrega aos 40 s espera só os 20 s
+   que faltam. ?ja=1 libera na hora (para conferir a página). */
+(function () {
+  var ESPERA = 60000;
+  var bloco = document.getElementById('depois');
+  if (/[?&]ja=1/.test(location.search)) { bloco.classList.add('on'); return; }
+  var liberaEm;
+  try {
+    liberaEm = parseInt(sessionStorage.getItem('trancadas-libera') || '0', 10);
+    if (!liberaEm) { liberaEm = Date.now() + ESPERA; sessionStorage.setItem('trancadas-libera', String(liberaEm)); }
+  } catch (e) { liberaEm = Date.now() + ESPERA; }
+  setTimeout(function () { bloco.classList.add('on'); }, Math.max(0, liberaEm - Date.now()));
+})();
+</script>
+
+</body>
+</html>

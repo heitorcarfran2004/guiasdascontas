@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1F3A2C">
+<meta name="robots" content="noindex,nofollow">
+<title>Última chance · Guias Trançadas</title>
+
+<!-- ============================================================
+     DOWNSELL "30 Modelos de Guias Trançadas", modelado do /dows da miçanga.
+     Chega aqui quem recusou o /upsell (R$ 19,90).
+     O QUE TROCAR: as 2 constantes logo abaixo.
+     ============================================================ -->
+<script>
+  // 1. PREÇO do downsell. Aparece em todo lugar marcado com data-preco (card e popup).
+  window.PRECO_DOWNSELL = "R$ TROCAR";
+  // 2. LINK do produto de downsell na Wiapy. Enquanto tiver "TROCAR" (ou "undefined")
+  //    o botão de aceite não cobra nada: o clique só mostra um aviso.
+  window.DOWNSELL_ACEITE = "https://pay.wiapy.com/checkout/TROCAR-DOWNSELL";
+  // Recusa: fim do funil, vai para o app/entregável das Guias.
+  window.DOWNSELL_RECUSA = "https://guiasdecontas.vercel.app";
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'"
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+
+<!-- SDK da Wiapy: define initWiapyUpsell(), que desenha o botão de aceite e o de recusa -->
+<script src="https://wiapy.com/sell/1.0.0/sell.min.js"></script>
+
+<!-- UTMify: o mesmo script da LP das Guias -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+
+<style>
+:root{
+  --verde:#1F3A2C; --verde-esc:#16291F;
+  --dourado:#C6A15B; --dourado-esc:#9C7838; --dourado-claro:#E2C27F;
+  --creme:#F8F5EC; --creme-2:#F1EADA; --borda:#E6DCC4;
+  --tinta:#1D2922; --cinza:#5D695F; --branco:#fff;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; background:var(--creme); color:var(--tinta); font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow-x:hidden}
+img{display:block; max-width:100%}
+.env{width:100%; max-width:460px; margin:0 auto; padding:0 16px}
+h1,h2,h3,.por b,.selo b{font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1}
+
+/* ══════════ contador ══════════ */
+.faixa-tempo{background:var(--verde); color:var(--creme); position:relative; z-index:30; box-shadow:0 2px 14px rgba(22,41,31,.3); border-bottom:2px solid var(--dourado)}
+.faixa-tempo .env{display:flex; align-items:center; justify-content:center; gap:11px; padding:11px 12px}
+.faixa-tempo b{font-weight:700; font-size:14.5px; letter-spacing:.4px}
+.relogio{display:flex; align-items:center; gap:4px}
+.digito{background:rgba(0,0,0,.28); color:var(--dourado-claro); border-radius:8px; min-width:30px; padding:5px 3px; text-align:center; font-size:20px; font-weight:800; line-height:1; font-variant-numeric:tabular-nums lining-nums}
+.doispontos{font-size:19px; font-weight:800; color:var(--dourado-claro); animation:pisca 1s steps(1) infinite}
+@keyframes pisca{50%{opacity:.2}}
+.faixa-tempo.acabou{background:#4b5163; border-color:#4b5163}
+
+/* ══════════ a compra que acabou de acontecer ══════════ */
+.aprovado{background:#eaf3ec; border-bottom:1px solid #cfe2d4; color:var(--verde); text-align:center}
+.aprovado .env{display:flex; align-items:center; justify-content:center; gap:8px; padding:10px 12px}
+.aprovado svg{width:17px; height:17px; flex:0 0 auto}
+.aprovado span{font-size:13px; font-weight:600; line-height:1.35}
+
+/* ══════════ a oferta ══════════ */
+.bloco{width:100%; max-width:460px; margin:0 auto; padding:20px 16px 6px; text-align:center}
+.tag{display:inline-block; font-weight:700; font-size:11.5px; letter-spacing:1.1px; text-transform:uppercase; color:var(--verde); background:var(--dourado-claro); padding:7px 15px 6px; border-radius:999px; margin-bottom:14px}
+.headline{font-family:var(--serif); font-weight:700; font-size:28px; line-height:1.18; color:var(--verde); margin:0 0 12px; text-wrap:balance}
+.headline .linha-2{display:block; margin-top:9px; font-size:.8em; line-height:1.28}
+.headline em{font-style:normal; color:var(--dourado-esc); position:relative; isolation:isolate}
+.headline em::after{content:""; position:absolute; left:0; right:0; bottom:-1px; height:7px; background:rgba(198,161,91,.22); border-radius:4px; z-index:-1}
+.intro{margin:0 0 6px; font-size:15px; line-height:1.6; color:var(--cinza); text-wrap:pretty}
+.intro em{font-style:normal; font-weight:600; color:var(--tinta)}
+.intro strong{font-weight:700; color:var(--verde)}
+
+/* trilho de guias trançadas reais (B-roll), deslizando sozinho como o da miçanga */
+.trilho{display:flex; gap:10px; overflow-x:auto; margin:18px -16px 0; padding:4px 16px 10px; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+.trilho::-webkit-scrollbar{display:none}
+.trilho figure{flex:0 0 clamp(128px,36vw,160px); margin:0}
+.trilho img{width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:10px; background:var(--creme-2); box-shadow:0 8px 18px rgba(31,58,44,.12)}
+.legenda{margin:2px 0 0; font-size:11.5px; color:#8a948c}
+
+.titulo-lista{font-family:var(--serif); font-weight:700; font-size:20px; line-height:1.25; color:var(--verde); text-align:center; margin:30px 0 18px; position:relative; padding-bottom:14px}
+.titulo-lista::after{content:""; position:absolute; left:50%; transform:translateX(-50%); bottom:0; width:46px; height:3px; border-radius:99px; background:var(--dourado)}
+.lista{display:flex; flex-direction:column; gap:14px; text-align:left}
+.item{display:flex; align-items:flex-start; gap:11px}
+.item .ck{flex:0 0 22px; width:22px; height:22px; margin-top:1px; border-radius:50%; background:var(--verde); color:var(--dourado-claro); display:inline-flex; align-items:center; justify-content:center}
+.item .ck svg{width:13px; height:13px}
+.item p{margin:0; font-size:14.5px; line-height:1.5; color:var(--cinza)}
+.item strong{font-weight:600; color:var(--tinta)}
+
+/* ══════════ preço e botão ══════════ */
+.oferta{background:var(--branco); border:1px solid var(--borda); border-top:3px solid var(--dourado); border-radius:14px; padding:22px 16px 18px; margin:28px 0 0; text-align:center; box-shadow:0 10px 26px rgba(31,58,44,.09)}
+.oferta__titulo{font-family:var(--serif); font-weight:700; font-size:21px; color:var(--verde); margin:0 0 8px}
+.de{font-size:14px; color:var(--cinza)}
+.por{display:flex; align-items:baseline; justify-content:center; margin-top:4px}
+.por b{font-family:var(--serif); font-weight:700; font-size:44px; line-height:1; color:var(--verde)}
+.parcela{margin-top:7px; font-size:13px; color:var(--cinza)}
+#wiapy_upsell{margin-top:16px}
+.aviso-link{display:none; margin:10px 0 0; padding:9px 10px; border-radius:8px; background:#fff7e6; border:1px solid #f0d49a; color:#7a5a17; font-size:13px; font-weight:600}
+.cta-verde{display:block; width:100%; padding:15px 18px; border-radius:10px; background:#00d769; color:#fff; text-align:center; text-decoration:none; font-size:17px; font-weight:700; border:0; cursor:pointer; font-family:var(--sans)}
+.cta-verde:hover{background:#00b85a}
+.recusar{display:block; margin-top:12px; text-align:center; font-size:14px; color:#000}
+.selo-seguro{display:flex; align-items:center; justify-content:center; gap:6px; margin-top:12px; font-size:12px; color:var(--cinza)}
+.selo-seguro svg{width:13px; height:13px}
+
+/* ══════════ garantia ══════════ */
+.garantia{display:flex; align-items:center; gap:14px; background:var(--branco); border:1px solid var(--borda); border-radius:14px; padding:16px; margin:18px 0 0; text-align:left}
+.selo{flex:none; position:relative; width:76px; height:76px; border-radius:50%; background:var(--verde); color:var(--creme); display:flex; flex-direction:column; align-items:center; justify-content:center}
+.selo::before{content:""; position:absolute; inset:4px; border-radius:50%; border:1.5px solid var(--dourado)}
+.selo b{font-family:var(--serif); font-size:30px; line-height:1; color:var(--dourado-claro)}
+.selo span{font-size:9.5px; letter-spacing:1.4px; text-transform:uppercase; font-weight:700}
+.garantia-txt b{display:block; font-size:16px; font-weight:700; color:var(--verde); margin-bottom:3px}
+.garantia-txt p{margin:0; font-size:13px; line-height:1.45; color:var(--cinza)}
+
+/* ── confirmação da recusa (igual à miçanga) ── */
+.modal{position:fixed; inset:0; z-index:60; background:rgba(16,28,22,.62); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; padding:18px; animation:aparece .18s ease}
+.modal[hidden]{display:none}
+@keyframes aparece{from{opacity:0}}
+.modal-caixa{width:100%; max-width:360px; background:#fff; border-radius:18px; padding:26px 22px 22px; text-align:center; box-shadow:0 24px 60px rgba(12,16,28,.34); animation:sobe .24s cubic-bezier(.2,.8,.3,1)}
+@keyframes sobe{from{transform:translateY(14px) scale(.97); opacity:0}}
+.modal-ico{width:56px; height:56px; border-radius:50%; margin:0 auto 14px; background:#f6efdf; color:var(--dourado-esc); display:flex; align-items:center; justify-content:center}
+.modal-ico svg{width:27px; height:27px}
+.modal-caixa h3{font-family:var(--serif); font-weight:700; font-size:22px; line-height:1.2; color:var(--verde); margin:0 0 9px}
+.modal-caixa p{margin:0 0 18px; font-size:14px; line-height:1.6; color:var(--cinza); text-wrap:pretty}
+.modal-caixa p strong{color:var(--tinta); font-weight:600}
+.modal-nao{display:block; margin-top:13px; padding:6px; font-size:13.5px; color:var(--cinza); text-decoration:underline; text-underline-offset:3px}
+
+.rodape{text-align:center; padding:26px 16px calc(20px + env(safe-area-inset-bottom)); font-size:11.5px; line-height:1.6; color:#8a948c}
+
+@media (max-width:400px){
+  .headline{font-size:25px}
+  .intro{font-size:14.5px}
+  .por b{font-size:40px}
+  .faixa-tempo b{font-size:13px}
+  .digito{min-width:27px; font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){.doispontos{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- ═════════ contador ═════════ -->
+<div class="faixa-tempo" id="faixa-tempo">
+  <div class="env">
+    <b id="rotulo-tempo">OFERTA EXPIRA EM</b>
+    <div class="relogio">
+      <span class="digito" id="d1">0</span><span class="digito" id="d2">0</span>
+      <span class="doispontos">:</span>
+      <span class="digito" id="d3">5</span><span class="digito" id="d4">7</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════ compra aprovada ═════════ -->
+<div class="aprovado">
+  <div class="env">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+    <span>Seu acesso aos projetos está garantido. Falta só isto:</span>
+  </div>
+</div>
+
+<div class="bloco">
+  <span class="tag">Última chance</span>
+
+  <h1 class="headline">
+    TEM <em>CERTEZA</em> DISSO?
+    <span class="linha-2">Sem a trança, <em>cada força fica separada</em></span>
+  </h1>
+
+  <p class="intro">
+    Os seus projetos trazem uma guia para cada força. A <em>trançada</em> é a que une
+    o seu orixá e a entidade que caminha com você num fio só. Por isso estou refazendo
+    a oferta <strong>por um preço menor</strong>, e só agora.
+  </p>
+
+  <!-- quadros de vídeos reais de guias trançadas (não são páginas do material). O JS
+       duplica as imagens para o trilho dar a volta sem emenda. -->
+  <div class="trilho" id="trilho">
+    <figure><img src="assets/upsell/t1.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada azul e dourada"></figure>
+    <figure><img src="assets/upsell/t2.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada lilás e branca com búzios"></figure>
+    <figure><img src="assets/upsell/t3.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada preta e branca com crucifixo"></figure>
+    <figure><img src="assets/upsell/t4.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guias trançadas vermelhas e pretas com tridente"></figure>
+    <figure><img src="assets/upsell/t5.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada vermelha com rosas"></figure>
+    <figure><img src="assets/upsell/t6.webp" width="360" height="480" loading="lazy" decoding="async" alt="Mãos fechando uma guia trançada de três fios"></figure>
+  </div>
+  <p class="legenda">Guias trançadas feitas por artesãs. Imagens ilustrativas.</p>
+
+  <h2 class="titulo-lista">O que você deixa de fora sem elas</h2>
+  <div class="lista">
+    <div class="item">
+      <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <p><strong>30 modelos de guias trançadas</strong>, unindo 2 ou 3 forças numa guia só, entre orixás e entidades.</p>
+    </div>
+    <div class="item">
+      <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <p><strong>As cores certas</strong> de cada força e <strong>a quantidade exata de contas</strong> em cada fio.</p>
+    </div>
+    <div class="item">
+      <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <p><strong>Passo a passo ilustrado</strong> da trança, do primeiro fio ao fechamento.</p>
+    </div>
+    <div class="item">
+      <span class="ck"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <p>Sempre <strong>respeitando o que a sua casa orienta</strong>.</p>
+    </div>
+  </div>
+
+  <div class="oferta" id="oferta">
+    <h3 class="oferta__titulo">Tudo por apenas</h3>
+    <div class="de">De <s>R$ 19,90</s> por</div>
+    <div class="por"><b data-preco>R$ TROCAR</b></div>
+    <div class="parcela">Pagamento único</div>
+
+    <!-- a Wiapy desenha aqui o botão de aceite (1 clique) e o link de recusa -->
+    <div id="wiapy_upsell"></div>
+    <p class="aviso-link" id="aviso-link">Link de compra ainda não configurado.</p>
+
+    <div class="selo-seguro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+      Compra segura · acesso junto com o seu pedido
+    </div>
+  </div>
+
+  <div class="garantia">
+    <div class="selo"><b>7</b><span>dias</span></div>
+    <div class="garantia-txt">
+      <b>Garantia de 7 dias</b>
+      <p>Se em até 7 dias você achar que não é para você, é só pedir o reembolso e devolvemos 100% do valor.</p>
+    </div>
+  </div>
+</div>
+
+<p class="rodape">
+  Última chamada: esta oferta não volta a aparecer.<br>
+  © 2026 · Todos os direitos reservados.
+</p>
+
+<!-- ═════════ confirmação da recusa ═════════ -->
+<div class="modal" id="modal-certeza" hidden>
+  <div class="modal-caixa" role="dialog" aria-modal="true" aria-labelledby="modal-tit">
+    <div class="modal-ico">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4.6"/><circle cx="12" cy="17.3" r=".9" fill="currentColor" stroke="none"/><path d="M10.3 3.9L2.5 17.6A2 2 0 004.2 20.6h15.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>
+    </div>
+    <h3 id="modal-tit">Tem certeza mesmo?</h3>
+    <p>
+      Esta é a <strong>última vez</strong> que as guias trançadas aparecem por
+      <strong data-preco>R$ TROCAR</strong>. Saindo daqui, você segue só com uma guia
+      para cada força.
+    </p>
+    <button type="button" class="cta-verde" id="modal-sim">Sim, eu quero as trançadas</button>
+    <a class="modal-nao" id="modal-nao" href="https://guiasdecontas.vercel.app">Não, vou seguir sem elas</a>
+  </div>
+</div>
+
+<script>
+/* preço: um lugar só (PRECO_DOWNSELL no topo) */
+document.querySelectorAll('[data-preco]').forEach(function (el) { el.textContent = window.PRECO_DOWNSELL; });
+</script>
+
+<!-- ══════════ botão da Wiapy ══════════
+     Mesmo esquema da miçanga e do /upsell: tenta desenhar já; se o SDK atrasar, tenta
+     de novo por 5 s e, se não vier, põe os dois links à mão. -->
+<script>
+(function () {
+  var caixa = document.getElementById('wiapy_upsell');
+
+  function desenhar() {
+    if (typeof initWiapyUpsell !== 'function') return false;
+    initWiapyUpsell({
+      linkUrl: window.DOWNSELL_ACEITE,
+      linkText: "SIM, EU ACEITO ESSA OFERTA",
+      styles: { backgroundColor: "#00d769", hoverBackgroundColor: "#00b85a", fontSize: "17px", borderRadius: "10px" },
+      refusalLinkUrl: window.DOWNSELL_RECUSA,
+      refusalLinkText: "Recusar esta oferta",
+      refusalLinkColor: "#000000"
+    });
+    return true;
+  }
+
+  function reserva() {
+    if (caixa.children.length) return;
+    caixa.innerHTML =
+      '<a class="cta-verde" href="' + window.DOWNSELL_ACEITE + '">SIM, EU ACEITO ESSA OFERTA</a>' +
+      '<a class="recusar" href="' + window.DOWNSELL_RECUSA + '">Recusar esta oferta</a>';
+  }
+
+  if (!desenhar()) {
+    var tentativa = setInterval(function () { if (desenhar()) clearInterval(tentativa); }, 150);
+    setTimeout(function () { clearInterval(tentativa); reserva(); }, 5000);
+  }
+
+  // GUARDA: enquanto o link do downsell tiver TROCAR/undefined, o aceite não sai daqui.
+  caixa.addEventListener('click', function (e) {
+    if (!/undefined|TROCAR/.test(window.DOWNSELL_ACEITE)) return;
+    if (!e.target.closest('button, .cta-verde')) return;
+    e.preventDefault(); e.stopPropagation();
+    document.getElementById('aviso-link').style.display = 'block';
+  }, true);
+})();
+</script>
+
+<!-- ══════════ a recusa passa pelo popup ══════════
+     O link de recusa nasce dentro de #wiapy_upsell (desenhado pelo SDK, que ainda
+     acrescenta ?wiapy_sell=... no fim), por isso a captura é por delegação no documento.
+     "Sim" fecha o popup e aperta o botão de 1 clique da Wiapy (não abre checkout novo);
+     "Não" segue para o mesmo endereço que a recusa ia abrir. -->
+<script>
+(function () {
+  var modal = document.getElementById('modal-certeza');
+  var nao = document.getElementById('modal-nao');
+  function fechar() { modal.hidden = true; document.body.style.overflow = ''; }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a || modal.contains(a)) return;
+    if ((a.getAttribute('href') || '').indexOf(window.DOWNSELL_RECUSA) !== 0) return;
+    e.preventDefault(); e.stopPropagation();
+    nao.href = a.href;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }, true);
+
+  document.getElementById('modal-sim').addEventListener('click', function () {
+    fechar();
+    document.getElementById('oferta').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var b = document.querySelector('#wiapy_upsell button, #wiapy_upsell .cta-verde');
+    if (b) b.click();
+  });
+  modal.addEventListener('click', function (e) { if (e.target === modal) fechar(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) fechar(); });
+})();
+</script>
+
+<script>
+/* CONTADOR — 57 segundos, como na miçanga, gravados na sessão. */
+(function () {
+  var SEG = 57, fim;
+  try {
+    fim = parseInt(sessionStorage.getItem('trancadas-dows-fim') || '0', 10);
+    if (!fim || fim < Date.now()) { fim = Date.now() + SEG * 1000; sessionStorage.setItem('trancadas-dows-fim', String(fim)); }
+  } catch (e) { fim = Date.now() + SEG * 1000; }
+  var d = ['d1', 'd2', 'd3', 'd4'].map(function (x) { return document.getElementById(x); });
+  function tique() {
+    var s = Math.max(0, Math.round((fim - Date.now()) / 1000));
+    var t = String(Math.floor(s / 60)).padStart(2, '0') + String(s % 60).padStart(2, '0');
+    for (var i = 0; i < 4; i++) if (d[i].textContent !== t[i]) d[i].textContent = t[i];
+    if (s <= 0) {
+      clearInterval(id);
+      document.getElementById('faixa-tempo').classList.add('acabou');
+      document.getElementById('rotulo-tempo').textContent = 'OFERTA ENCERRADA';
+    }
+  }
+  tique();
+  var id = setInterval(tique, 1000);
+})();
+
+/* trilho das guias: desliza sozinho e dá a volta (a 2ª leva é a emenda) */
+(function () {
+  var trilho = document.getElementById('trilho');
+  Array.prototype.slice.call(trilho.children).forEach(function (f) {
+    var c = f.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.querySelector('img').alt = ''; trilho.appendChild(c);
+  });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var arrastando = false, acumulado = 0;
+  function quadro() {
+    if (!arrastando) {
+      acumulado += 0.45;
+      if (acumulado >= 1) { var passo = Math.floor(acumulado); acumulado -= passo; trilho.scrollLeft += passo; }
+      if (trilho.scrollLeft >= trilho.scrollWidth / 2) trilho.scrollLeft -= trilho.scrollWidth / 2;
+    }
+    requestAnimationFrame(quadro);
+  }
+  ['pointerdown', 'touchstart'].forEach(function (ev) { trilho.addEventListener(ev, function () { arrastando = true; }, { passive: true }); });
+  ['pointerup', 'pointercancel', 'touchend', 'touchcancel', 'mouseleave'].forEach(function (ev) { trilho.addEventListener(ev, function () { arrastando = false; }, { passive: true }); });
+  window.addEventListener('pointerup', function () { arrastando = false; }, { passive: true });
+  requestAnimationFrame(quadro);
+})();
+</script>
+
+</body>
+</html>

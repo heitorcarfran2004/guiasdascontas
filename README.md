@@ -78,3 +78,28 @@ Celular 390 px e desktop 1440 px por captura via CDP (`_geracao/prints/`): sem r
 nenhuma imagem quebrada, nenhum id duplicado. Peso inicial ~110 KB (HTML + hero de 460 px).
 
 **Não publicado na Vercel.** Publicar só com ok do Heitor (`npx vercel deploy --prod` dentro desta pasta).
+
+## Pós-compra: /upsell e /dows (27/10)
+
+Fluxo: checkout → `upsell.html` (30 Modelos de Guias Trançadas, R$ 19,90, com VSL) → recusou → `dows.html`
+(mesmo produto, mais barato) → recusou → app das Guias (https://guiasdecontas.vercel.app).
+Modeladas de `funis/brincos-micanga/upsell.html` e `dows.html`. Botão de 1 clique = SDK da Wiapy (`sell.min.js`).
+
+| | onde | estado |
+|---|---|---|
+| Link do upsell | `window.UPSELL_ACEITE` no topo do `upsell.html` | `.../checkout/undefined` (Cadastrador criando) |
+| Recusa do upsell | `window.UPSELL_RECUSA` | `/dows` (relativo: funciona no localhost e no ar) |
+| Preço do downsell | `window.PRECO_DOWNSELL` no topo do `dows.html` | `R$ TROCAR` (preenche o card e o popup) |
+| Link do downsell | `window.DOWNSELL_ACEITE` | `TROCAR-DOWNSELL` |
+| Recusa do downsell | `window.DOWNSELL_RECUSA` | https://guiasdecontas.vercel.app |
+
+- **Desbloqueio do upsell:** igual à miçanga, por tempo de PÁGINA (não pelo player do VTurb). Só faixa, título,
+  subtítulo e VSL aparecem; aos 60 s entra o resto (`.depois` → `.on`). O instante fica no `sessionStorage`
+  (recarregar não zera). Para conferir sem esperar: `/upsell?ja=1`.
+- **Guarda:** enquanto o link de aceite tiver `undefined` ou `TROCAR`, o clique no botão verde não cobra nem
+  navega: mostra "Link de compra ainda não configurado". Some sozinha quando o link real entrar.
+- **Popup da recusa (dows):** "Sim" aperta o botão de 1 clique da Wiapy; "Não" segue para o app.
+- **Imagens:** `assets/upsell/t1..t6.webp` são quadros dos vídeos reais de guias trançadas
+  (Downloads/Guia de Contas/Vídeos Guia Trançadas, sem rosto nem marca), com a legenda "Imagens ilustrativas".
+  Não são páginas do material (ele ainda não existe).
+- Conferir: `node conferir.cjs upsell.html` / `node conferir.cjs dows.html`.
