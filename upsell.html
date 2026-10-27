@@ -89,9 +89,11 @@ h1,h2,.por b,.selo b{font-variant-numeric:lining-nums; font-feature-settings:"ln
 .chamada p{margin:10px 0 0; font-size:15.5px; line-height:1.55; color:var(--cinza)}
 .chamada strong{color:var(--tinta); font-weight:600}
 
-/* galeria: quadros reais de guias trançadas (B-roll), não páginas do material */
-.galeria{display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin:18px 0 0}
-.galeria img{width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:10px; background:var(--creme-2)}
+/* trilho de guias trançadas reais (B-roll), deslizando sozinho como o do /dows */
+.trilho{display:flex; gap:10px; overflow-x:auto; margin:18px -16px 0; padding:4px 16px 10px; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+.trilho::-webkit-scrollbar{display:none}
+.trilho figure{flex:0 0 clamp(128px,36vw,160px); margin:0}
+.trilho img{width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:10px; background:var(--creme-2); box-shadow:0 8px 18px rgba(31,58,44,.12)}
 .legenda{margin:8px 0 0; text-align:center; font-size:11.5px; color:#8a948c}
 
 /* ══════════ card: o que leva + preço + botão ══════════ */
@@ -174,13 +176,13 @@ h1,h2,.por b,.selo b{font-variant-numeric:lining-nums; font-feature-settings:"ln
   </div>
 
   <!-- quadros de vídeos reais de guias trançadas, sem rosto nem marca (fonte: Downloads/Guia de Contas/Vídeos Guia Trançadas) -->
-  <div class="galeria">
-    <img src="assets/upsell/t1.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada azul e dourada">
-    <img src="assets/upsell/t2.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada lilás e branca com búzios">
-    <img src="assets/upsell/t3.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada preta e branca com crucifixo">
-    <img src="assets/upsell/t4.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guias trançadas vermelhas e pretas com tridente">
-    <img src="assets/upsell/t5.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada vermelha com rosas">
-    <img src="assets/upsell/t6.webp" width="360" height="480" loading="lazy" decoding="async" alt="Mãos fechando uma guia trançada de três fios">
+  <div class="trilho" id="trilho">
+    <figure><img src="assets/upsell/t1.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada azul e dourada"></figure>
+    <figure><img src="assets/upsell/t2.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada lilás e branca com búzios"></figure>
+    <figure><img src="assets/upsell/t3.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada preta e branca com crucifixo"></figure>
+    <figure><img src="assets/upsell/t4.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guias trançadas vermelhas e pretas com tridente"></figure>
+    <figure><img src="assets/upsell/t5.webp" width="360" height="480" loading="lazy" decoding="async" alt="Guia trançada vermelha com rosas"></figure>
+    <figure><img src="assets/upsell/t6.webp" width="360" height="480" loading="lazy" decoding="async" alt="Mãos fechando uma guia trançada de três fios"></figure>
   </div>
   <p class="legenda">Guias trançadas feitas por artesãs. Imagens ilustrativas.</p>
 
@@ -321,5 +323,28 @@ h1,h2,.por b,.selo b{font-variant-numeric:lining-nums; font-feature-settings:"ln
 })();
 </script>
 
+<script>
+/* trilho das guias: desliza sozinho e dá a volta (a 2ª leva é a emenda) */
+(function () {
+  var trilho = document.getElementById("trilho"); if (!trilho) return;
+  Array.prototype.slice.call(trilho.children).forEach(function (f) {
+    var c = f.cloneNode(true); c.setAttribute("aria-hidden", "true"); c.querySelector("img").alt = ""; trilho.appendChild(c);
+  });
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var arrastando = false, acumulado = 0;
+  function quadro() {
+    if (!arrastando) {
+      acumulado += 0.45;
+      if (acumulado >= 1) { var passo = Math.floor(acumulado); acumulado -= passo; trilho.scrollLeft += passo; }
+      if (trilho.scrollLeft >= trilho.scrollWidth / 2) trilho.scrollLeft -= trilho.scrollWidth / 2;
+    }
+    requestAnimationFrame(quadro);
+  }
+  ["pointerdown", "touchstart"].forEach(function (ev) { trilho.addEventListener(ev, function () { arrastando = true; }, { passive: true }); });
+  ["pointerup", "pointercancel", "touchend", "touchcancel", "mouseleave"].forEach(function (ev) { trilho.addEventListener(ev, function () { arrastando = false; }, { passive: true }); });
+  window.addEventListener("pointerup", function () { arrastando = false; }, { passive: true });
+  requestAnimationFrame(quadro);
+})();
+</script>
 </body>
 </html>
