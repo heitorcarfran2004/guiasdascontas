@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><style id="ff"></style><body>
+<script>
+(async () => {
+  const css = await (await fetch('fontes.css')).text();
+  document.getElementById('ff').textContent = css.replace(/assets\/fonts\//g, '../assets/fonts/');
+  await document.fonts.load('600 100px "Playfair Display"'); await document.fonts.load('700 100px "Playfair Display"');
+  await document.fonts.load('400 100px Inter'); await document.fonts.load('700 100px Inter');
+  const txt = 'Aprenda a montar guias de contas em casa, passo a passo, com a quantidade exata de cada conta e o tamanho final. 0123456789';
+  const c = document.createElement('canvas').getContext('2d');
+  const m = (f) => { c.font = f; const r = c.measureText(txt); return { w: r.width, a: r.fontBoundingBoxAscent, d: r.fontBoundingBoxDescent }; };
+  const res = {};
+  for (const [nome, web, fb] of [['inter400', '400 100px Inter', '400 100px Arial'], ['inter700', '700 100px Inter', '700 100px Arial'], ['play600', '600 100px "Playfair Display"', '600 100px Georgia'], ['play700', '700 100px "Playfair Display"', '700 100px Georgia'], ['play600tnr', '600 100px "Playfair Display"', '600 100px "Times New Roman"']]) {
+    const W = m(web), F = m(fb); const s = W.w / F.w;
+    res[nome] = { size: +(s * 100).toFixed(2), asc: +(W.a / s).toFixed(2), desc: +(W.d / s).toFixed(2), webA: W.a, webD: W.d, fbA: F.a, fbD: F.d };
+  }
+  document.title = 'OK'; window.R = res;
+})();
+</script>

@@ -6,15 +6,21 @@
 <title>100 Projetos de Guias de Contas Para Fazer em Casa</title>
 <meta name="description" content="Projetos ilustrados detalhando cores, quantidades, medidas e passo a passo visual para montar cada guia, mesmo começando do zero.">
 <meta name="theme-color" content="#1F3A2C">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- fonte não bloqueante (mesmo truque da LP da miçanga) -->
-<link rel="preload" as="style"
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" media="print" onload="this.media='all'"
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap">
-<noscript><link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+<!-- fontes servidas pelo próprio site (os mesmos arquivos do Google Fonts): sem as 2 conexões externas -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin.woff2" crossorigin>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/inter-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/inter-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(assets/fonts/playfair-display-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(assets/fonts/playfair-display-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600 700;font-display:swap;src:url(assets/fonts/playfair-display-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600 700;font-display:swap;src:url(assets/fonts/playfair-display-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+/* reserva com as medidas da fonte final: o texto não pula quando ela chega (CLS) */
+@font-face{font-family:"Inter Reserva";font-weight:400 500;src:local("Arial"),local("ArialMT");size-adjust:105%;ascent-override:92%;descent-override:23%;line-gap-override:0%}
+@font-face{font-family:"Inter Reserva";font-weight:600 800;src:local("Arial Bold"),local("Arial-BoldMT");size-adjust:103%;ascent-override:94%;descent-override:23.4%;line-gap-override:0%}
+@font-face{font-family:"Playfair Reserva";font-weight:600 700;src:local("Georgia Bold"),local("Georgia-Bold");size-adjust:88.2%;ascent-override:122.6%;descent-override:28.4%;line-gap-override:0%}
+</style>
 <!-- a imagem do hero é o elemento de LCP: pré-carrega -->
 <link rel="preload" as="image" href="assets/hero-460.webp"
       imagesrcset="assets/hero-460.webp 460w, assets/hero-760.webp 760w, assets/hero-1200.webp 1200w"
@@ -124,8 +130,8 @@
     --tinta:#1D2922;
     --cinza:#5D695F;
     --branco:#fff;
-    --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
-    --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:"Inter","Inter Reserva",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --serif:"Playfair Display","Playfair Reserva",Georgia,"Times New Roman",serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -475,26 +481,26 @@
     <!-- Páginas REAIS do entregável (entregaveis/60-guias-de-contas/paginas). As 10 aparecem
          DUAS vezes: a segunda leva é a emenda do loop. Trocar imagem = trocar nas duas levas. -->
     <div class="trilho" id="paginas">
-      <figure><img src="assets/paginas/M01-p1.webp" srcset="assets/paginas-sm/M01-p1.webp 340w, assets/paginas/M01-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 01, Guia de Oxalá branca com cristais: foto, materiais, cores e esquema das contas"></figure>
-      <figure><img src="assets/paginas/M09-p1.webp" srcset="assets/paginas-sm/M09-p1.webp 340w, assets/paginas/M09-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 09, Guia de Oxum dourada"></figure>
-      <figure><img src="assets/paginas/M01-p2.webp" srcset="assets/paginas-sm/M01-p2.webp 340w, assets/paginas/M01-p2.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 2 do Modelo 01: montagem passo a passo em 8 etapas, detalhe do fechamento e dicas"></figure>
-      <figure><img src="assets/paginas/M03-p1.webp" srcset="assets/paginas-sm/M03-p1.webp 340w, assets/paginas/M03-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 03, Guia de Ogum vermelha com cristais"></figure>
-      <figure><img src="assets/paginas/M11-p1.webp" srcset="assets/paginas-sm/M11-p1.webp 340w, assets/paginas/M11-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 11, Guia de Iemanjá azul-clara e branca"></figure>
-      <figure><img src="assets/paginas/M20-p1.webp" srcset="assets/paginas-sm/M20-p1.webp 340w, assets/paginas/M20-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 20, Guia de Oxumarê arco-íris"></figure>
-      <figure><img src="assets/paginas/M25-p1.webp" srcset="assets/paginas-sm/M25-p1.webp 340w, assets/paginas/M25-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 25, Guia do Caboclo Sete Flechas"></figure>
-      <figure><img src="assets/paginas/M40-p1.webp" srcset="assets/paginas-sm/M40-p1.webp 340w, assets/paginas/M40-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 40, Guia da Pombagira Maria Mulambo"></figure>
-      <figure><img src="assets/paginas/M27-p2.webp" srcset="assets/paginas-sm/M27-p2.webp 340w, assets/paginas/M27-p2.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 2 do Modelo 27, Guia de Preto-Velho: montagem passo a passo"></figure>
-      <figure><img src="assets/paginas/M56-p1.webp" srcset="assets/paginas-sm/M56-p1.webp 340w, assets/paginas/M56-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 56, Guia Artesanal com Búzios"></figure>
-      <figure aria-hidden="true"><img src="assets/paginas/M01-p1.webp" srcset="assets/paginas-sm/M01-p1.webp 340w, assets/paginas/M01-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
-      <figure aria-hidden="true"><img src="assets/paginas/M09-p1.webp" srcset="assets/paginas-sm/M09-p1.webp 340w, assets/paginas/M09-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
-      <figure aria-hidden="true"><img src="assets/paginas/M01-p2.webp" srcset="assets/paginas-sm/M01-p2.webp 340w, assets/paginas/M01-p2.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
-      <figure aria-hidden="true"><img src="assets/paginas/M03-p1.webp" srcset="assets/paginas-sm/M03-p1.webp 340w, assets/paginas/M03-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
-      <figure aria-hidden="true"><img src="assets/paginas/M11-p1.webp" srcset="assets/paginas-sm/M11-p1.webp 340w, assets/paginas/M11-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
-      <figure aria-hidden="true"><img src="assets/paginas/M20-p1.webp" srcset="assets/paginas-sm/M20-p1.webp 340w, assets/paginas/M20-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
-      <figure aria-hidden="true"><img src="assets/paginas/M25-p1.webp" srcset="assets/paginas-sm/M25-p1.webp 340w, assets/paginas/M25-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
-      <figure aria-hidden="true"><img src="assets/paginas/M40-p1.webp" srcset="assets/paginas-sm/M40-p1.webp 340w, assets/paginas/M40-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
-      <figure aria-hidden="true"><img src="assets/paginas/M27-p2.webp" srcset="assets/paginas-sm/M27-p2.webp 340w, assets/paginas/M27-p2.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
-      <figure aria-hidden="true"><img src="assets/paginas/M56-p1.webp" srcset="assets/paginas-sm/M56-p1.webp 340w, assets/paginas/M56-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
+      <figure><img src="assets/paginas/M01-p1.webp" srcset="assets/paginas-sm/M01-p1.webp 340w, assets/paginas-md/M01-p1.webp 480w, assets/paginas/M01-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 01, Guia de Oxalá branca com cristais: foto, materiais, cores e esquema das contas"></figure>
+      <figure><img src="assets/paginas/M09-p1.webp" srcset="assets/paginas-sm/M09-p1.webp 340w, assets/paginas-md/M09-p1.webp 480w, assets/paginas/M09-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 09, Guia de Oxum dourada"></figure>
+      <figure><img src="assets/paginas/M01-p2.webp" srcset="assets/paginas-sm/M01-p2.webp 340w, assets/paginas-md/M01-p2.webp 480w, assets/paginas/M01-p2.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 2 do Modelo 01: montagem passo a passo em 8 etapas, detalhe do fechamento e dicas"></figure>
+      <figure><img src="assets/paginas/M03-p1.webp" srcset="assets/paginas-sm/M03-p1.webp 340w, assets/paginas-md/M03-p1.webp 480w, assets/paginas/M03-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 03, Guia de Ogum vermelha com cristais"></figure>
+      <figure><img src="assets/paginas/M11-p1.webp" srcset="assets/paginas-sm/M11-p1.webp 340w, assets/paginas-md/M11-p1.webp 480w, assets/paginas/M11-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 11, Guia de Iemanjá azul-clara e branca"></figure>
+      <figure><img src="assets/paginas/M20-p1.webp" srcset="assets/paginas-sm/M20-p1.webp 340w, assets/paginas-md/M20-p1.webp 480w, assets/paginas/M20-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 20, Guia de Oxumarê arco-íris"></figure>
+      <figure><img src="assets/paginas/M25-p1.webp" srcset="assets/paginas-sm/M25-p1.webp 340w, assets/paginas-md/M25-p1.webp 480w, assets/paginas/M25-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 25, Guia do Caboclo Sete Flechas"></figure>
+      <figure><img src="assets/paginas/M40-p1.webp" srcset="assets/paginas-sm/M40-p1.webp 340w, assets/paginas-md/M40-p1.webp 480w, assets/paginas/M40-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 40, Guia da Pombagira Maria Mulambo"></figure>
+      <figure><img src="assets/paginas/M27-p2.webp" srcset="assets/paginas-sm/M27-p2.webp 340w, assets/paginas-md/M27-p2.webp 480w, assets/paginas/M27-p2.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 2 do Modelo 27, Guia de Preto-Velho: montagem passo a passo"></figure>
+      <figure><img src="assets/paginas/M56-p1.webp" srcset="assets/paginas-sm/M56-p1.webp 340w, assets/paginas-md/M56-p1.webp 480w, assets/paginas/M56-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" decoding="async" alt="Página 1 do Modelo 56, Guia Artesanal com Búzios"></figure>
+      <figure aria-hidden="true"><img src="assets/paginas/M01-p1.webp" srcset="assets/paginas-sm/M01-p1.webp 340w, assets/paginas-md/M01-p1.webp 480w, assets/paginas/M01-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
+      <figure aria-hidden="true"><img src="assets/paginas/M09-p1.webp" srcset="assets/paginas-sm/M09-p1.webp 340w, assets/paginas-md/M09-p1.webp 480w, assets/paginas/M09-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
+      <figure aria-hidden="true"><img src="assets/paginas/M01-p2.webp" srcset="assets/paginas-sm/M01-p2.webp 340w, assets/paginas-md/M01-p2.webp 480w, assets/paginas/M01-p2.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
+      <figure aria-hidden="true"><img src="assets/paginas/M03-p1.webp" srcset="assets/paginas-sm/M03-p1.webp 340w, assets/paginas-md/M03-p1.webp 480w, assets/paginas/M03-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
+      <figure aria-hidden="true"><img src="assets/paginas/M11-p1.webp" srcset="assets/paginas-sm/M11-p1.webp 340w, assets/paginas-md/M11-p1.webp 480w, assets/paginas/M11-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
+      <figure aria-hidden="true"><img src="assets/paginas/M20-p1.webp" srcset="assets/paginas-sm/M20-p1.webp 340w, assets/paginas-md/M20-p1.webp 480w, assets/paginas/M20-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
+      <figure aria-hidden="true"><img src="assets/paginas/M25-p1.webp" srcset="assets/paginas-sm/M25-p1.webp 340w, assets/paginas-md/M25-p1.webp 480w, assets/paginas/M25-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
+      <figure aria-hidden="true"><img src="assets/paginas/M40-p1.webp" srcset="assets/paginas-sm/M40-p1.webp 340w, assets/paginas-md/M40-p1.webp 480w, assets/paginas/M40-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
+      <figure aria-hidden="true"><img src="assets/paginas/M27-p2.webp" srcset="assets/paginas-sm/M27-p2.webp 340w, assets/paginas-md/M27-p2.webp 480w, assets/paginas/M27-p2.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
+      <figure aria-hidden="true"><img src="assets/paginas/M56-p1.webp" srcset="assets/paginas-sm/M56-p1.webp 340w, assets/paginas-md/M56-p1.webp 480w, assets/paginas/M56-p1.webp 620w" sizes="(max-width:780px) 236px, 310px" width="620" height="876" loading="lazy" alt=""></figure>
     </div>
 
     <div class="partes">
@@ -751,8 +757,11 @@
       var trilho = document.getElementById(id);
       if (!trilho) return;
       var VELOCIDADE = 0.45, arrastando = false, acumulado = 0;
+      // só anda quando está na tela: fora dela, rolar a cada quadro só gasta o processador do celular
+      var visivel = !('IntersectionObserver' in window), rodando = false;
       function meio() { return trilho.scrollWidth / 2; }
       function quadro() {
+        if (!visivel) { rodando = false; return; }
         if (!arrastando) {
           acumulado += VELOCIDADE;
           if (acumulado >= 1) { var p = Math.floor(acumulado); acumulado -= p; trilho.scrollLeft += p; }
@@ -767,7 +776,11 @@
         trilho.addEventListener(ev, function () { arrastando = false; }, { passive: true });
       });
       window.addEventListener('pointerup', function () { arrastando = false; }, { passive: true });
-      requestAnimationFrame(quadro);
+      function ligar() { if (visivel && !rodando) { rodando = true; requestAnimationFrame(quadro); } }
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (e) { visivel = e[0].isIntersecting; ligar(); }).observe(trilho);
+      }
+      ligar();
     }
     deslizar('paginas');
   })();
