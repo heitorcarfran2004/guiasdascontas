@@ -171,12 +171,19 @@
   @media(max-width:520px){.barra .l1{font-size:11px;letter-spacing:1.8px}.barra .l2{font-size:13px}}
 
   /* ---------- BOTÃO ---------- */
-  .btn{display:inline-block;background:linear-gradient(180deg,#D8B670 0%,var(--dourado) 55%,#B88F45 100%);color:var(--verde-esc);
+  .btn{display:inline-block;position:relative;overflow:hidden;isolation:isolate;
+    background:linear-gradient(180deg,#3A8A5C 0%,#2C7049 55%,#225A3A 100%);color:#fff;
     font-weight:800;font-size:clamp(15.5px,2vw,18px);letter-spacing:.5px;padding:19px 40px;border-radius:12px;
     text-decoration:none;text-align:center;border:none;cursor:pointer;font-family:inherit;line-height:1.2;
-    box-shadow:0 8px 22px rgba(156,120,56,.32),inset 0 1px 0 rgba(255,255,255,.45);
+    box-shadow:0 8px 22px rgba(34,90,58,.32),inset 0 1px 0 rgba(255,255,255,.25);
     transition:transform .16s,box-shadow .16s,filter .16s}
-  .btn:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 12px 28px rgba(156,120,56,.4),inset 0 1px 0 rgba(255,255,255,.45)}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 12px 28px rgba(34,90,58,.4),inset 0 1px 0 rgba(255,255,255,.25)}
+  /* reflexo discreto: uma faixa clara atravessa o botão a cada 4 s */
+  .btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;z-index:-1;pointer-events:none;
+    background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.22) 50%,transparent 100%);
+    animation:reflexo 4s ease-in-out infinite}
+  @keyframes reflexo{0%,70%{left:-60%}100%{left:130%}}
+  @media(prefers-reduced-motion:reduce){.btn::after{animation:none;display:none}}
   .btn.full{width:100%}
   @media(max-width:520px){.btn{width:100%;padding:18px 20px}}
   .selos{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--cinza)}
